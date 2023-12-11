@@ -26,7 +26,7 @@ export const SendVersionedTransaction: FC = () => {
                 }),
             ];
 
-            // Get the lates block hash to use on our transaction and confirmation
+            // Get the latest block hash to use on our transaction and confirmation
             let latestBlockhash = await connection.getLatestBlockhash()
 
             // Create a new TransactionMessage with version and compile it to version 0
@@ -36,11 +36,11 @@ export const SendVersionedTransaction: FC = () => {
                 instructions,
             }).compileToV0Message();
 
-            // Create a new VersionedTransacction to support the v0 message
-            const transation = new VersionedTransaction(messageV0)
+            // Create a new VersionedTransaction to support the v0 message
+            const transaction = new VersionedTransaction(messageV0)
 
             // Send transaction and await for signature
-            signature = await sendTransaction(transation, connection);
+            signature = await sendTransaction(transaction, connection);
 
             // Await for confirmation
             await connection.confirmTransaction({ signature, ...latestBlockhash }, 'confirmed');
@@ -57,19 +57,19 @@ export const SendVersionedTransaction: FC = () => {
     return (
         <div className="flex flex-row justify-center">
             <div className="relative group items-center">
-                <div className="m-1 absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-fuchsia-500 
+                <div className="m-1 absolute -inset-0.5 bg-gradient-to-r from-gray-300 to-gray-500 
                 rounded-lg blur opacity-20 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
-                    <button
-                        className="group w-60 m-2 btn animate-pulse bg-gradient-to-br from-indigo-500 to-fuchsia-500 hover:from-white hover:to-purple-300 text-black"
-                        onClick={onClick} disabled={!publicKey}
-                        >
+                <button
+                    className="group w-60 m-2 btn animate-pulse bg-gradient-to-br from-blue-500 to-purple-500 hover:from-white hover:to-purple-300 text-black"
+                    onClick={onClick} disabled={!publicKey}
+                >
                     <div className="hidden group-disabled:block ">
                         Wallet not connected
                     </div>
                     <span className="block group-disabled:hidden" >
                         Send Versioned Transaction
                     </span>
-                    </button>
+                </button>
             </div>
         </div>
     );

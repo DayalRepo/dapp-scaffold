@@ -6,10 +6,10 @@ const Basics: NextPage = (props) => {
   return (
     <div>
       <Head>
-        <title>Solana Scaffold</title>
+        <title>AMIGOS ODYSSEY MINT</title>
         <meta
           name="description"
-          content="Basic Functionality"
+          content="🎉 *Introducing AO MINT: Your Gateway to Amigos Odyssey NFTs! 🚀*"
         />
       </Head>
       <BasicsView />

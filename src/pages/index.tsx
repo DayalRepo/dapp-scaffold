@@ -4,12 +4,12 @@ import { HomeView } from "../views";
 
 const Home: NextPage = (props) => {
   return (
-    <div>
+    <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white min-h-screen">
       <Head>
-        <title>Solana Scaffold</title>
+        <title>AMIGOS ODYSSEY MINT</title>
         <meta
           name="description"
-          content="Solana Scaffold"
+          content="🎉 *Introducing AO MINT: Your Gateway to Amigos Odyssey NFTs! 🚀*"
         />
       </Head>
       <HomeView />
