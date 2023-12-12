@@ -28,7 +28,7 @@ export const HomeView: FC = () => {
 
   useAutoConnect();
 
-  const nftImagePaths = Array.from({ length: 28 }, (_, index) => `/nft_images/${index + 1}.jpg`); // Assuming images are named 1.jpg, 2.jpg, ..., 20.jpg
+  const nftImagePaths = Array.from({ length: 30 }, (_, index) => `/nft_images/${index + 1}.jpg`); // Assuming images are named 1.jpg, 2.jpg, ..., 20.jpg
 
   return (
     <div className="flex flex-col h-screen">
@@ -115,15 +115,18 @@ export const HomeView: FC = () => {
             <p className="text-white mt-4">
               Explore the world of decentralized sweetness with Amigos Odyssey! 🍬 Mint your Amigos Odyssey NFT now and be part of the confectionery revolution.
             </p>
+             {/* Minting Note */}
+          <p className="text-white font-bold mt-4">
+            Minting has not started yet! 🚀 Stay tuned for updates. Follow our social media pages for the latest details.
+          </p>
+
           </div>
 
-          {/* Minting Note */}
-          <p className="text-white font-bold mt-4">
-            Minting has not started yet! 🚀 Stay tuned for updates on our NFT project. Follow our social media pages for the latest details.
-          </p>
+         
 
 
           {/* Gallery of NFT Images */}
+          <div className="flex-grow flex flex-col justify-center overflow-x-hidden mt-4"></div>
           <div className="flex flex-wrap justify-center mt-6">
             {nftImagePaths.map((imagePath, index) => (
               <img
@@ -131,7 +134,9 @@ export const HomeView: FC = () => {
                 src={imagePath}
                 alt={`NFT ${index + 1}`}
                 className="mb-6 rounded"
-                style={{ width: '600px', height: '700px' }}
+                style={{ borderRadius: '30px' }}
+                width={500}
+                height={500}
               />
             ))}
           </div>
