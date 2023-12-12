@@ -56,7 +56,7 @@ export const HomeView: FC = () => {
           {/* Buttons */}
 <div className="flex items-center space-2">
   <a
-    href="https://twitter.com/YourTwitterAccount1"
+    href="https://amigos-odyssey-click.vercel.app/"
     target="_blank"
     rel="noopener noreferrer"
     className="rounded-full bg-blue-400 hover:bg-blue-500 text-black font-bold px-4 py-2 transition-all duration-300 hidden md:inline mr-5"
@@ -65,7 +65,7 @@ export const HomeView: FC = () => {
   </a>
 
   <a
-    href="https://twitter.com/YourTwitterAccount1"
+    href="https://amigos-odyssey-space.vercel.app/"
     target="_blank"
     rel="noopener noreferrer"
     className="rounded-full bg-blue-400 hover:bg-blue-500 text-black font-bold px-4 py-2 transition-all duration-300 hidden md:inline mr-5"
@@ -74,7 +74,7 @@ export const HomeView: FC = () => {
   </a>
 
   <a
-    href="https://twitter.com/YourTwitterAccount1"
+    href="https://twitter.com/amigosodyssey"
     target="_blank"
     rel="noopener noreferrer"
     className="rounded-full bg-blue-400 hover:bg-blue-500 text-black font-bold px-4 py-2 transition-all duration-300 hidden md:inline mr-5"
@@ -83,7 +83,7 @@ export const HomeView: FC = () => {
   </a>
 
   <a
-    href="https://twitter.com/YourTwitterAccount2"
+    href="https://discord.com/invite/xjVx6AekJs"
     target="_blank"
     rel="noopener noreferrer"
     className="rounded-full bg-purple-400 hover:bg-purple-500 text-black font-bold px-4 py-2 transition-all duration-300 hidden md:inline mr-5"
