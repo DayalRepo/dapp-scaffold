@@ -111,10 +111,7 @@ export const HomeView: FC = () => {
               height={500}
             />
             <CandyMint />
-            {/* Text below CandyMint */}
-            <p className="text-white mt-4">
-              Explore the world of decentralized sweetness with Amigos Odyssey! 🍬 Mint your Amigos Odyssey NFT now and be part of the confectionery revolution.
-            </p>
+          
              {/* Minting Note */}
           <p className="text-white font-bold mt-4">
             Minting has not started yet! 🚀 Stay tuned for updates. Follow our social media pages for the latest details.
