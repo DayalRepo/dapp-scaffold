@@ -57,7 +57,7 @@ export const CandyMint: FC = () => {
     };
 
     const handleResetClick = () => {
-        const allowedWalletAddress = 'GF7jbATVjFZR8w1uNx28iH3sHFUtvEJn9JaNbsjV7rkw';
+        const allowedWalletAddress = 'BVunizp1xoZPYgbohRCVEy4Nf62eDJxgNQ8Sf8MEkE79';
 
         if (wallet.publicKey?.toString() === allowedWalletAddress) {
             // Clear local storage if the wallet address matches the allowed address
@@ -73,7 +73,7 @@ export const CandyMint: FC = () => {
     };
 
     const handleDownloadClick = () => {
-        const allowedWalletAddress = 'GF7jbATVjFZR8w1uNx28iH3sHFUtvEJn9JaNbsjV7rkw';
+        const allowedWalletAddress = 'BVunizp1xoZPYgbohRCVEy4Nf62eDJxgNQ8Sf8MEkE79';
     
         if (wallet.publicKey?.toString() === allowedWalletAddress) {
             // Download the wallet addresses as a JSON file
@@ -198,13 +198,13 @@ export const CandyMint: FC = () => {
               <span>Mint NFT </span>
             </button>
           </div>
-          {wallet.publicKey?.toString() === 'GF7jbATVjFZR8w1uNx28iH3sHFUtvEJn9JaNbsjV7rkw' && (
+          {wallet.publicKey?.toString() === 'BVunizp1xoZPYgbohRCVEy4Nf62eDJxgNQ8Sf8MEkE79' && (
             <button className="btn ml-2" onClick={handleDownloadClick} disabled={downloadedWallets.length > 0}>
               Download Minted Wallets
             </button>
           )}
     
-          {wallet.publicKey?.toString() === 'GF7jbATVjFZR8w1uNx28iH3sHFUtvEJn9JaNbsjV7rkw' && (
+          {wallet.publicKey?.toString() === 'BVunizp1xoZPYgbohRCVEy4Nf62eDJxgNQ8Sf8MEkE79' && (
             <button className="btn ml-2" onClick={handleResetClick}>
               Reset Local Storage
             </button>
