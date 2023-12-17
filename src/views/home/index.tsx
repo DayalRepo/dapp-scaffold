@@ -7,6 +7,7 @@ import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import React from 'react';
 import { useAutoConnect } from '../../contexts/AutoConnectProvider';
+import { link } from 'fs';
 
 const WalletMultiButtonDynamic = dynamic(
   async () => (await import('@solana/wallet-adapter-react-ui')).WalletMultiButton,
@@ -42,7 +43,6 @@ export const HomeView: FC = () => {
   <link rel="manifest" href="/manifest.json"/>
   <title>AMIGOS ODYSSEY</title>
   <link href="/static/css/main.c5685a7e.css" rel="stylesheet">
-  <!-- Add the following line to include the favicon for Google search results -->
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   <script defer="defer" src="/static/js/main.0108abfd.js"></script>
 </head>
