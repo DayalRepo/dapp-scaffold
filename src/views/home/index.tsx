@@ -42,7 +42,7 @@ export const HomeView: FC = () => {
   <link rel="apple-touch-icon" href="/logo.jpg"/>
   <link rel="manifest" href="/manifest.json"/>
   <title>AMIGOS ODYSSEY</title>
-  <link href="/static/css/main.c5685a7e.css" rel="stylesheet">
+  <link href="/static/css/main.c5685a7e.css" rel="stylesheet"/>
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   <script defer="defer" src="/static/js/main.0108abfd.js"></script>
 </head>
