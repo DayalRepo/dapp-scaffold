@@ -1,4 +1,5 @@
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
+import { link } from 'fs';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -20,7 +21,6 @@ class MyDocument extends Document {
   <link rel="manifest" href="/manifest.json"/>
   <title>AMIGOS ODYSSEY</title>
   <link href="/static/css/main.c5685a7e.css" rel="stylesheet">
-  <!-- Add the following line to include the favicon for Google search results -->
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   <script defer="defer" src="/static/js/main.0108abfd.js"></script>
 </head>
