@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { CandyMint } from '../../components/CandyMint';
 import useUserSOLBalanceStore from '../../stores/useUserSOLBalanceStore';
-
+import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import React from 'react';
 import { useAutoConnect } from '../../contexts/AutoConnectProvider';
@@ -32,6 +32,17 @@ export const HomeView: FC = () => {
 
   return (
     <div className="flex flex-col h-screen">
+      <Head>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
+        <meta name="twitter:site" content="@amigosodyssey" />
+        <meta name="twitter:title" content="AMIGOS ODYSSEY" />
+        <meta
+          name="twitter:description"
+          content="Explore the world of decentralized sweetness with Amigos Odyssey! 🍬 Mint your Amigos Odyssey NFT now and be part of the confectionery revolution."
+        />
+        <meta name="twitter:image" content="URL_TO_YOUR_IMAGE" />
+        <title>AMIGOS ODYSSEY</title>
+      </Head>
       {/* Full Background Gradient */}
       <div className="bg-gradient-to-r from-purple-800 to-blue-500 h-full">
         {/* NavBar / Header */}
@@ -56,7 +67,7 @@ export const HomeView: FC = () => {
           {/* Buttons */}
 <div className="flex items-center space-2">
   <a
-    href="https://amigos-odyssey-click.vercel.app/"
+    href="https://twitter.com/YourTwitterAccount1"
     target="_blank"
     rel="noopener noreferrer"
     className="rounded-full bg-blue-400 hover:bg-blue-500 text-black font-bold px-4 py-2 transition-all duration-300 hidden md:inline mr-5"
@@ -65,7 +76,7 @@ export const HomeView: FC = () => {
   </a>
 
   <a
-    href="https://amigos-odyssey-space.vercel.app/"
+    href="https://twitter.com/YourTwitterAccount1"
     target="_blank"
     rel="noopener noreferrer"
     className="rounded-full bg-blue-400 hover:bg-blue-500 text-black font-bold px-4 py-2 transition-all duration-300 hidden md:inline mr-5"
@@ -74,7 +85,7 @@ export const HomeView: FC = () => {
   </a>
 
   <a
-    href="https://twitter.com/amigosodyssey"
+    href="https://twitter.com/YourTwitterAccount1"
     target="_blank"
     rel="noopener noreferrer"
     className="rounded-full bg-blue-400 hover:bg-blue-500 text-black font-bold px-4 py-2 transition-all duration-300 hidden md:inline mr-5"
@@ -83,7 +94,7 @@ export const HomeView: FC = () => {
   </a>
 
   <a
-    href="https://discord.com/invite/xjVx6AekJs"
+    href="https://twitter.com/YourTwitterAccount2"
     target="_blank"
     rel="noopener noreferrer"
     className="rounded-full bg-purple-400 hover:bg-purple-500 text-black font-bold px-4 py-2 transition-all duration-300 hidden md:inline mr-5"
@@ -111,7 +122,10 @@ export const HomeView: FC = () => {
               height={500}
             />
             <CandyMint />
-          
+            {/* Text below CandyMint */}
+            <p className="text-white mt-4">
+              Explore the world of decentralized sweetness with Amigos Odyssey! 🍬 Mint your Amigos Odyssey NFT now and be part of the confectionery revolution.
+            </p>
              {/* Minting Note */}
           <p className="text-white font-bold mt-4">
             Minting has not started yet! 🚀 Stay tuned for updates. Follow our social media pages for the latest details.
