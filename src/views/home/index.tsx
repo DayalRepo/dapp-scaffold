@@ -32,17 +32,20 @@ export const HomeView: FC = () => {
 
   return (
     <div className="flex flex-col h-screen">
-      <Head>
-        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
-        <meta name="twitter:site" content="@amigosodyssey" />
-        <meta name="twitter:title" content="AMIGOS ODYSSEY" />
-        <meta
-          name="twitter:description"
-          content="Explore the world of decentralized sweetness with Amigos Odyssey! 🍬 Mint your Amigos Odyssey NFT now and be part of the confectionery revolution."
-        />
-        <meta name="twitter:image" content="URL_TO_YOUR_IMAGE" />
-        <title>AMIGOS ODYSSEY</title>
-      </Head>
+      <head>
+  <meta charset="utf-8"/>
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#000000"/>
+  <meta name="description" content="Web site created using create-react-app"/>
+  <link rel="apple-touch-icon" href="/logo.jpg"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <title>AMIGOS ODYSSEY</title>
+  <link href="/static/css/main.c5685a7e.css" rel="stylesheet">
+  <!-- Add the following line to include the favicon for Google search results -->
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  <script defer="defer" src="/static/js/main.0108abfd.js"></script>
+</head>
       {/* Full Background Gradient */}
       <div className="bg-gradient-to-r from-purple-800 to-blue-500 h-full">
         {/* NavBar / Header */}
