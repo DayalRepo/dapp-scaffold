@@ -1,3 +1,4 @@
+// Import statements remain unchanged
 import { FC, useEffect } from 'react';
 import Link from 'next/link';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
@@ -28,7 +29,7 @@ export const HomeView: FC = () => {
 
   useAutoConnect();
 
-  const nftImagePaths = Array.from({ length: 30 }, (_, index) => `/nft_images/${index + 1}.jpg`); // Assuming images are named 1.jpg, 2.jpg, ..., 20.jpg
+  const nftImagePaths = Array.from({ length: 30 }, (_, index) => `/nft_images/${index + 1}.jpg`);
 
   return (
     <div className="flex flex-col h-screen">
@@ -40,13 +41,22 @@ export const HomeView: FC = () => {
           name="twitter:description"
           content="Explore the world of decentralized sweetness with Amigos Odyssey! 🍬 Mint your Amigos Odyssey NFT now and be part of the confectionery revolution."
         />
-        <meta name="twitter:image" content="URL_TO_YOUR_IMAGE" />
-        <title>AMIGOS ODYSSEY</title>
+        <meta name="twitter:image" content="https://x.com/amigosodyssey/status/1737330549709242827?s=20" />
+        <title>AMIGOS ODYSSEY MINT</title>
       </Head>
-      {/* Full Background Gradient */}
-      <div className="bg-gradient-to-r from-purple-800 to-blue-500 h-full">
+
+      {/* Full Background Gradient with Background Image */}
+       <div
+        className="bg-gradient-to-r from-purple-800 to-blue-500 h-full"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/6.png')`,
+          backgroundSize: 'cover',  // This ensures the image covers the entire container
+          backgroundPosition: 'center',  // This centers the image
+          minHeight: '100vh',  // Ensure the div takes at least the full height of the viewport
+        }}
+      >
         {/* NavBar / Header */}
-        <nav className="bg-gradient-to-r from-blue-500 to-purple-500 p-4 flex justify-between items-center">
+        <nav className="p-4 flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
             <img
@@ -65,48 +75,30 @@ export const HomeView: FC = () => {
           </div>
 
           {/* Buttons */}
-<div className="flex items-center space-2">
-  <a
-    href="https://twitter.com/YourTwitterAccount1"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="rounded-full bg-blue-400 hover:bg-blue-500 text-black font-bold px-4 py-2 transition-all duration-300 hidden md:inline mr-5"
-  >
-    AO Click
-  </a>
+          <div className="flex items-center space-2">
 
-  <a
-    href="https://twitter.com/YourTwitterAccount1"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="rounded-full bg-blue-400 hover:bg-blue-500 text-black font-bold px-4 py-2 transition-all duration-300 hidden md:inline mr-5"
-  >
-    AO Space
-  </a>
+            <a
+              href="https://twitter.com/amigosodyssey"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-green-400 hover:bg-green-500 text-black font-bold justify-center  px-4 py-2 transition-all duration-300 hidden md:inline mr-5"
+            >
+              TWITTER
+            </a>
 
-  <a
-    href="https://twitter.com/YourTwitterAccount1"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="rounded-full bg-blue-400 hover:bg-blue-500 text-black font-bold px-4 py-2 transition-all duration-300 hidden md:inline mr-5"
-  >
-    Twitter
-  </a>
-
-  <a
-    href="https://twitter.com/YourTwitterAccount2"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="rounded-full bg-purple-400 hover:bg-purple-500 text-black font-bold px-4 py-2 transition-all duration-300 hidden md:inline mr-5"
-  >
-    Discord
-  </a>
-</div>
-
+            <a
+              href="https://discord.com/invite/xjVx6AekJs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-green-400 hover:bg-green-500 text-black font-bold px-4 py-2 justify-center transition-all duration-300 hidden md:inline mr-5"
+            >
+             DISCORD
+            </a>
+          </div>
 
           {/* Wallet/Select Wallet Button */}
-          <div className="flex items-center">
-            <WalletMultiButtonDynamic className="rounded-full bg-purple-400 hover:bg-purple-500 text-black font-bold px-4 py-2 transition-all duration-300" />
+          <div className="rounded-full bg-green-400 hover:bg-darkgreen-500 text-black font-bold px-1 py-1 transition-all duration-300" >
+            <WalletMultiButtonDynamic />
           </div>
         </nav>
 
@@ -122,19 +114,11 @@ export const HomeView: FC = () => {
               height={500}
             />
             <CandyMint />
-            {/* Text below CandyMint */}
-            <p className="text-white mt-4">
-              Explore the world of decentralized sweetness with Amigos Odyssey! 🍬 Mint your Amigos Odyssey NFT now and be part of the confectionery revolution.
-            </p>
              {/* Minting Note */}
-          <p className="text-white font-bold mt-4">
-            Minting has not started yet! 🚀 Stay tuned for updates. Follow our social media pages for the latest details.
-          </p>
-
+            <p className="text-white font-bold mt-4">
+              Minting has not started yet! 🚀 Stay tuned for updates. Follow our social media pages for the latest details.
+            </p>
           </div>
-
-         
-
 
           {/* Gallery of NFT Images */}
           <div className="flex-grow flex flex-col justify-center overflow-x-hidden mt-4"></div>
@@ -151,9 +135,8 @@ export const HomeView: FC = () => {
               />
             ))}
           </div>
-          </div>
         </div>
       </div>
-    
+    </div>
   );
 };
