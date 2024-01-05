@@ -46,83 +46,84 @@ export const CandyMint: FC = () => {
     [wallet, mplCandyMachine, walletAdapterIdentity, mplTokenMetadata, quicknodeEndpoint, createUmi]
   );
 
-    const clearLocalStorage = () => {
-        // Clear the local storage for minted wallets
-        mintedWallets.clear();
+  const isAdmin = wallet.publicKey?.toString() === 'ExnV1bFPfDQJ5PtVy8jEdH2gt19cu1XLDM8t7wprKdR5';
 
-        // Update local storage with the cleared minted wallets set (only on the client side)
-        if (typeof window !== 'undefined') {
-            localStorage.setItem(MINTED_WALLETS_KEY, JSON.stringify(Array.from(mintedWallets)));
-        }
-    };
+  const clearLocalStorage = () => {
+    // Clear the local storage for minted wallets
+    mintedWallets.clear();
 
-    const handleResetClick = () => {
-        const allowedWalletAddress = 'BVunizp1xoZPYgbohRCVEy4Nf62eDJxgNQ8Sf8MEkE79';
+    // Update local storage with the cleared minted wallets set (only on the client side)
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(MINTED_WALLETS_KEY, JSON.stringify(Array.from(mintedWallets)));
+    }
+  };
 
-        if (wallet.publicKey?.toString() === allowedWalletAddress) {
-            // Clear local storage if the wallet address matches the allowed address
-            clearLocalStorage();
-            notify({ type: 'success', message: 'Local storage reset successfully!' });
-        } else {
-            notify({
-                type: 'error',
-                message: 'Unauthorized',
-                description: 'You are not authorized to reset local storage.',
-            });
-        }
-    };
+  const handleResetClick = () => {
+    const allowedWalletAddress = 'ExnV1bFPfDQJ5PtVy8jEdH2gt19cu1XLDM8t7wprKdR5';
 
-    const handleDownloadClick = () => {
-        const allowedWalletAddress = 'BVunizp1xoZPYgbohRCVEy4Nf62eDJxgNQ8Sf8MEkE79';
-    
-        if (wallet.publicKey?.toString() === allowedWalletAddress) {
-            // Download the wallet addresses as a JSON file
-            const blob = new Blob([JSON.stringify(Array.from(mintedWallets))], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'minted_wallets.json';
-            a.click();
-    
-            // Notify about the successful download
-            notify({ type: 'success', message: 'Wallet addresses downloaded successfully!' });
-    
-            // Add the downloaded wallet addresses to the state
-            setDownloadedWallets(Array.from(mintedWallets) as string[]);
-        } else {
-            notify({
-                type: 'error',
-                message: 'Unauthorized',
-                description: 'You are not authorized to download the minted wallet addresses.',
-            });
-        }
-    };
-    
+    if (isAdmin && wallet.publicKey?.toString() === allowedWalletAddress) {
+      // Clear local storage if the wallet address matches the allowed address
+      clearLocalStorage();
+      notify({ type: 'success', message: 'Local storage reset successfully!' });
+    } else {
+      notify({
+        type: 'error',
+        message: 'Unauthorized',
+        description: 'You are not authorized to reset local storage.',
+      });
+    }
+  };
 
-    const onClick = useCallback(async () => {
-        if (!wallet.publicKey) {
-          console.log('error', 'Wallet not connected!');
-          notify({ type: 'error', message: 'error', description: 'Wallet not connected!' });
-          return;
-        }
-    
-        // Check if the wallet is in the allowlist
-        if (!allowlist.includes(wallet.publicKey.toString())) {
-          console.log('error', 'Wallet not in the allowlist!');
-          notify({ type: 'error', message: 'error', description: 'Wallet not in the allowlist!' });
-          return;
-        }
-    
-        // Check if the wallet has already minted
-        if (mintedWallets.has(wallet.publicKey?.toString())) {
-          console.log('error', 'Wallet has already minted an NFT!');
-          notify({
-            type: 'error',
-            message: 'error',
-            description: 'Wallet has already minted an NFT!',
-          });
-          return;
-        }
+  const handleDownloadClick = () => {
+    const allowedWalletAddress = 'ExnV1bFPfDQJ5PtVy8jEdH2gt19cu1XLDM8t7wprKdR5';
+
+    if (isAdmin && wallet.publicKey?.toString() === allowedWalletAddress) {
+      // Download the wallet addresses as a JSON file
+      const blob = new Blob([JSON.stringify(Array.from(mintedWallets))], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'minted_wallets.json';
+      a.click();
+
+      // Notify about the successful download
+      notify({ type: 'success', message: 'Wallet addresses downloaded successfully!' });
+
+      // Add the downloaded wallet addresses to the state
+      setDownloadedWallets(Array.from(mintedWallets) as string[]);
+    } else {
+      notify({
+        type: 'error',
+        message: 'Unauthorized',
+        description: 'You are not authorized to download the minted wallet addresses.',
+      });
+    }
+  };
+
+  const onClick = useCallback(async () => {
+    if (!wallet.publicKey) {
+      console.log('error', 'Wallet not connected!');
+      notify({ type: 'error', message: 'error', description: 'Wallet not connected!' });
+      return;
+    }
+
+    // Check if the wallet is in the allowlist or if it is an admin wallet
+    if (!allowlist.includes(wallet.publicKey.toString()) && !isAdmin) {
+      console.log('error', 'Unauthorized access!');
+      notify({ type: 'error', message: 'error', description: 'Unauthorized access!' });
+      return;
+    }
+
+    // Check if the wallet has already minted
+    if (mintedWallets.has(wallet.publicKey?.toString())) {
+      console.log('error', 'Wallet has already minted an NFT!');
+      notify({
+        type: 'error',
+        message: 'error',
+        description: 'Wallet has already minted an NFT!',
+      });
+      return;
+    }
     
         // Fetch the Candy Machine Address.
         const candyMachineAddress = publicKey(process.env.NEXT_PUBLIC_CANDY_MACHINE_ID);
@@ -184,8 +185,8 @@ export const CandyMint: FC = () => {
           console.error('Minting failed:', error);
           notify({ type: 'error', message: 'Minting failed', description: error.message });
         }
-      }, [wallet, connection, getUserSOLBalance, umi, treasury]);
-    
+      }, [wallet, connection, getUserSOLBalance, umi, treasury, isAdmin]);
+
       return (
         <div className="flex flex-row justify-center">
           <div className="relative group items-center">
@@ -198,19 +199,19 @@ export const CandyMint: FC = () => {
               <span>Mint NFT </span>
             </button>
           </div>
-          {wallet.publicKey?.toString() === 'BVunizp1xoZPYgbohRCVEy4Nf62eDJxgNQ8Sf8MEkE79' && (
-            <button className="btn ml-2" onClick={handleDownloadClick} disabled={downloadedWallets.length > 0}>
-              Download Minted Wallets
-            </button>
+    
+          {isAdmin && (
+            <>
+              <button className="btn ml-2" onClick={handleDownloadClick} disabled={downloadedWallets.length > 0}>
+                Download Minted Wallets
+              </button>
+    
+              <button className="btn ml-2" onClick={handleResetClick}>
+                Reset Local Storage
+              </button>
+            </>
           )}
     
-          {wallet.publicKey?.toString() === 'BVunizp1xoZPYgbohRCVEy4Nf62eDJxgNQ8Sf8MEkE79' && (
-            <button className="btn ml-2" onClick={handleResetClick}>
-              Reset Local Storage
-            </button>
-          )}
-    
-          {/* Confetti effect component */}
           <ConfettiComponent active={mintSuccess} />
         </div>
       );
