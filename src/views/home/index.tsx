@@ -43,10 +43,14 @@ export const HomeView: FC = () => {
         />
         <meta name="twitter:image" content="https://x.com/amigosodyssey/status/1737330549709242827?s=20" />
         <title>AMIGOS ODYSSEY MINT</title>
+        {/* Content Security Policy */}
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-randomstring'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'"/>
+        {/* Strict Referrer Policy */}
+        <meta name="referrer" content="no-referrer-when-downgrade" />
       </Head>
 
       {/* Full Background Gradient with Background Image */}
-       <div
+      <div
         className="bg-gradient-to-r from-purple-800 to-blue-500 h-full"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/6.png')`,
@@ -76,7 +80,6 @@ export const HomeView: FC = () => {
 
           {/* Buttons */}
           <div className="flex items-center space-2">
-
             <a
               href="https://twitter.com/amigosodyssey"
               target="_blank"
@@ -92,12 +95,12 @@ export const HomeView: FC = () => {
               rel="noopener noreferrer"
               className="rounded-full bg-green-400 hover:bg-green-500 text-black font-bold px-4 py-2 justify-center transition-all duration-300 hidden md:inline mr-5"
             >
-             DISCORD
+              DISCORD
             </a>
           </div>
 
           {/* Wallet/Select Wallet Button */}
-          <div className="rounded-full bg-green-400 hover:bg-darkgreen-500 text-black font-bold px-1 py-1 transition-all duration-300" >
+          <div className="rounded-full bg-green-400 hover:bg-darkgreen-500 text-black font-bold px-1 py-1 transition-all duration-300">
             <WalletMultiButtonDynamic />
           </div>
         </nav>
@@ -114,7 +117,7 @@ export const HomeView: FC = () => {
               height={500}
             />
             <CandyMint />
-             {/* Minting Note */}
+            {/* Minting Note */}
             <p className="text-white font-bold mt-4">
               Minting has not started yet! 🚀 Stay tuned for updates. Follow our social media pages for the latest details.
             </p>
@@ -140,3 +143,5 @@ export const HomeView: FC = () => {
     </div>
   );
 };
+
+export default HomeView;
